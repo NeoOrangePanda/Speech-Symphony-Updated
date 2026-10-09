@@ -56,7 +56,7 @@ def display_language_options():
         "1": "en-US",
         "2": "fr-FR",
         "3": "es-ES",
-        "4": "bn-BD",
+        "4": "bn-IN",
         "5": "hi-IN",
         "6": "ar-SA",
         "7": "zh-CN",
