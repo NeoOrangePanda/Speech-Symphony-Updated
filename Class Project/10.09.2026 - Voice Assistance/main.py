@@ -33,6 +33,7 @@ def speech_to_text():
 def translate_text(text, target_language="spanish"):
     translator = MyMemoryTranslator(source="english",target=target_language)
     translation = translator.translate(text)
+    print(f"🌟 Original Text: {text}")
     print(f"🌐 Translated Text: {translation}")
     return translation
 
@@ -68,8 +69,17 @@ def main():
     target_language = display_language_options()
     original_text = speech_to_text()
     if original_text:
-        translated_text = translate_text(original_text, target_language=target_language)
-        speak(translated_text, language=target_language)
-        print("✅ Translation Spoken Out!")
+        try:
+            translated_text = translate_text(original_text, target_language=target_language)
+            speak(translated_text, language=target_language)
+            print("✅ Translation Spoken Out!")
+
+            repeat = input(f"👂 Do you want to hear it again? (y/n): ").lower().strip()
+            if repeat == "y" or repeat == "yes":
+                speak(translated_text, language=target_language)
+            else:
+                print("🎉 Thank you for using the translator!!")
+
+        except Exception as e: print(f"❌ Translation Failed: {e}")
 
 if __name__ == "__main__": main()
